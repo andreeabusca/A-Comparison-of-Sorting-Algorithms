@@ -1,0 +1,8 @@
+def BubbleSort(list,n):
+    sorted = False
+    while(sorted == False):
+        sorted = True
+        for i in range(n-1):
+            if(list[i] > list[i+1]):
+                list[i],list[i+1] = list[i+1],list[i]
+                sorted = False						

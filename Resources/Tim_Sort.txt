@@ -1,0 +1,51 @@
+def Min_Len(n):
+    r = 0
+    while n >= 32:
+        r |= n & 1
+        n >>= 1
+    return n + r
+def InsertionSort(list,l,r):
+    for i in range(l+1,r+1):
+        j = i
+        while(j > l and list[j] < list[j-1]):
+            list[j-1], list[j] = list[j], list[j-1]
+            j -= 1
+def MergeSort(list,left,mid,right):
+    Left_sublist = []
+    Right_sublist = []
+    for i in range(0,mid-left+1):
+        Left_sublist.append(list[left+i])
+    for i in range(0,right-mid):
+        Right_sublist.append(list[mid+1+i])
+    i = 0
+    j = 0
+    p = left
+    while(i < len(Left_sublist) and j < len(Right_sublist)):
+        if Left_sublist[i] < Right_sublist[j]:
+            list[p] = Left_sublist[i]
+            i += 1
+        else:
+            list[p] = Right_sublist[j]
+            j += 1
+        p += 1
+    while(i < len(Left_sublist)):
+        list[p] = Left_sublist[i]
+        i += 1
+        p += 1
+    while(j < len(Right_sublist)):
+        list[p] = Right_sublist[j]
+        j += 1
+        p += 1
+def TimSort(list):
+    min_len = Min_Len(len(list))
+    for l in range(0,len(list),min_len):
+        r = min(l+min_len-1,len(list)-1)
+        InsertionSort(list,l,r)
+    size = min_len
+    while size < len(list):
+        for left in range(0,len(list),2*size):
+            mid = min(len(list)-1,left+size-1)
+            right = min(left+2*size-1,len(list)-1)
+            if mid < right:
+                MergeSort(list,left,mid,right)
+        size = 2 * size

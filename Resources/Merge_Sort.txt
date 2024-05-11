@@ -1,0 +1,27 @@
+def MergeSort(list,left,mid,right):
+    if(len(list) == 0 or len(list) == 1):
+	return
+    mid = len(list) // 2
+    Left_sublist = list[:mid]
+    Right_sublist = list[mid:]
+    MergeSort(Left_sublist)
+    MergeSort(Right_sublist)
+    i = 0
+    j = 0
+    p = 0
+    while(i < len(Left_sublist) and j < len(Right_sublist)):
+        if Left_sublist[i] < Right_sublist[j]:
+            list[p] = Left_sublist[i]
+            i += 1
+        else:
+            list[p] = Right_sublist[j]
+            j += 1
+        p += 1
+    while(i < len(Left_sublist)):
+        list[p] = Left_sublist[i]
+        i += 1
+        p += 1
+    while(j < len(Right_sublist)):
+        list[p] = Right_sublist[j]
+        j += 1
+        p += 1

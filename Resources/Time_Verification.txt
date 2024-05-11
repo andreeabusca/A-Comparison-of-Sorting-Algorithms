@@ -1,0 +1,10 @@
+import time
+# here we copy the implementation of the sorting algorithm 
+start_time = time.time()
+Sorting_Alg_Name(list_name) // unsorted list
+print("--- %s seconds ---" % (time.time() - start_time))
+Sorting_Alg_Name(list_name) // sorted list
+print("--- %s seconds ---" % (time.time() - start_time))
+list_name.reverse()
+Sorting_Alg_Name(list_name) // reverse sorted list
+print("--- %s seconds ---" % (time.time() - start_time))

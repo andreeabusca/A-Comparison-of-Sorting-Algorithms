@@ -1,0 +1,14 @@
+ def pivot(list,l,r):
+     p = list[r]
+     i = l - 1
+     for j in range(l,r):
+         if list[j] <= p:
+             i += 1
+             list[i], list[j] = list[j], list[i]
+     list[i+1], list[r] = list[r], list[i+1]
+     return i + 1
+ def QuickSort(list,l,r):
+     if l < r:
+         q = pivot(list,l,r)
+         QuickSort(list,l,q-1)
+         QuickSort(list,q+1,r)
